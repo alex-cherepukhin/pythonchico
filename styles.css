@@ -46,11 +46,6 @@ pre {
     font-family: "Courier New", Courier, monospace;
 }
 
-pre .python {
-    color: inherit; /* We use parents color */
-    font-weight: bold;
-}
-
 code {
     background-color: #f4f4f4;
     color: #333;

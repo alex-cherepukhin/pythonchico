@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python для детей</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .welcome {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .lessons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .lesson {
+            padding: 15px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (min-width: 600px) {
+            .lessons {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .lesson {
+                flex: 1 1 calc(50% - 15px);
+                max-width: calc(50% - 15px);
+            }
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Python для детей</h1>
+    </header>
+    <main>
+        <div class="welcome">
+            <p>Добро пожаловать на наш сайт, посвящённый изучению Python для детей! Здесь вы найдёте простые и увлекательные уроки, которые помогут вам стать настоящими программистами!</p>
+        </div>
+        <div class="lessons">
+            <div class="lesson">
+                <h2>Урок 1: Знакомство с Python</h2>
+                <p>Узнайте, что такое программирование, и напишите свой первый код!</p>
+            </div>
+            <div class="lesson">
+                <h2>Урок 2: Переменные и данные</h2>
+                <p>Научитесь работать с числами, строками и другими типами данных.</p>
+            </div>
+            <div class="lesson">
+                <h2>Урок 3: Условия и циклы</h2>
+                <p>Откройте для себя, как компьютеры принимают решения и повторяют действия.</p>
+            </div>
+            <div class="lesson">
+                <h2>Урок 4: Функции</h2>
+                <p>Научитесь писать функции и упрощать свой код.</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Уроки Python для детей. Все права защищены.</p>
+    </footer>
+</body>
+</html>

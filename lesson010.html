@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 10</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Урок 10</h1>
+    </header>
+    <main>
+        <div class="welcome">
+            <h2>Отступы. Условная конструкция if.</h2>
+            <p>Изучим что такое отступы, и научим программу гибко реагировать в зависимости от входных данных.</p>
+        </div>
+        <div class="lesson">
+            <h3>Что такое отступы?</h3>
+            <p>Программа на языке Python состоит из набора инструкций. Каждая инструкция помещается
+                на новую строку. Например:</p>
+            <pre><code class="language-python">print(2 + 3) 
+print("Hello")</code></pre>
+            <p><b>Отступ</b> - это пробелы в начале строки кода. В Пайтоне каждая новая инструкция (команда)
+                должна начинаться с начала строки, без отступа. Например, в следующем случае мы получим ошибку,
+                хотя код будет практически аналогичен приведенному выше:</p>
+                <pre><code class="language-python">print(2 + 3) 
+    print("Hello") # Ошибка!</code></pre>
+            <p>Однако стоит учитывать, что некоторые конструкции языка могут состоять из
+                нескольких строк. Например, условная конструкция <b>if</b>:</p>
+            <pre><code class="language-python">if 1 < 2:
+    print("Hello!")</code></pre>
+            <p>В данном случае если 1 меньше 2, то выводится строка "Hello". И здесь уже должен быть отступ,
+                так как инструкция <code>print("Hello")</code> используется не сама по себе,
+                а как часть условной конструкции <b>if</b>. В качестве отступа надо использовать
+                четыре пробела.</p>
+        </div>
+        <div class="lesson">
+            <h3>Конструкция if</h3>
+            <p>Еще её называют <b>условным оператором</b>. Самая простая конструкция if состоит из:</p>
+            <p><ul>
+                <li>Ключевого слова <b>if</b></li>
+                <li>Условия, за которым следует двоеточие</li>
+                <li>Последующего блока инструкций, каждая из которой должна начинаться с новой строки
+                    и должна иметь отступ от начала выражения <b>if</b>.</li>
+            </ul></p>
+            <pre><code class="language-python">language = "english"
+if language == "english":
+    print("Hello!")
+    print("How do you do?")</code></pre>
+            <p>Значение переменной language равно "english", поэтому условие в выражении <b>if</b>
+            истинно, а значит выполнится инструкция <code>print()</code>, которая выведет
+            на экран приветствие по-английски.</p>
+            <pre><code class="language-none">Hello!
+How do you do?</code></pre>
+            <p>Давайте изменим код программы</p>
+            <pre><code class="language-python">language = "english"
+if language == "spanish":
+    print("¡Hola!")
+print("¿Como estas?")</code></pre>
+            <p>Условие в выражении <b>if</b> перестало быть истинным, поэтому первое сообщение
+            не будет выведено на экран. Но перед второй инструкцией <code>print()</code> нет оступа
+            от начала выражения <b>if</b>, поэтому она не относится к условному оператору и будет
+            выведена на экран вне зависимости от условия <b>if</b>:</p>
+            <pre><code class="language-none">¿Como estas?</code></pre>
+        </div>            
+        <div class="lesson">
+            <h3>Блок <b>else</b></h3>
+            <p>Если нам надо выполнить альтернативное действие на тот случай, если выражение
+                в условии <b>if</b> возвратит False (ложь), то мы можем использовать блок else:</p>
+                <pre><code class="language-python">language = "english"
+if language == "spanish":
+    print("¡Hola!")
+else:
+    print("Привет!")</code></pre>
+            <p>Если выражение <code>language == "spanish"</code> возвращает True, то выполняется блок <b>if</b>,
+                иначе выполняется блок <b>else</b>. И поскольку в данном случае условие language == "spanish"
+                возвращает <code>False</code>, то будут выполняться инструкция из блока <b>else</b>.</p>
+            <pre><code class="language-none">Привет!</code></pre>
+        </div>
+        <div class="lesson">
+            <h3>Блок <b>elif</b></h3>
+            <p>Если необходимо ввести несколько альтернативных условий, то можно использовать
+                дополнительные блоки <b>elif</b>, после которого идет блок инструкций.</p>
+            <pre><code class="language-python">language = "english"
+if language == "spanish":
+    print("¡Hola!")
+elif language == 'english':
+    print("Hello!")
+else:
+    print("Привет!")</code></pre>
+            <p>Программа выдаст на экран:</p>
+            <pre><code class="language-none">Hello!</code></pre>
+        </div>
+
+        <div class="lesson">
+            <h3>Задания</h3>
+            <ol>
+
+                <li>Напиши программу, которая спрашивает у пользователя, сколько рыб он поймал.
+                    Если введенное число рыб больше 10, надо выдать на экран "Ого!"</li>
+                <li>Создай программу, которая запрашивает количество ног существа. Пользователь
+                    вводит количество ног, по нему программа определяет, кот это или человек,
+                    и выводит результат на экран.</li>
+            </ol>
+        </div>
+
+    </main>
+    <div align="center"><img src="img/lesson010.jpg"></div>
+    <footer>
+        <p>&copy; 2024 Pythonchico</p>
+    </footer>
+</body>
+</html>

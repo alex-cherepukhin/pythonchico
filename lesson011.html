@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 11</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Урок 11</h1>
+    </header>
+    <main>
+        <div class="welcome">
+            <h2>Работа со строками</h2>
+            <p>Познакомимся с функциями и методами строк.</p>
+        </div>
+        <div class="lesson">
+            <h3>Базовые действия со строками</h3>
+            <p>Конкатенация или сложение строк - это операция соединения строк в одну. Используется операция "<b>+</b>"</p>
+            <pre><code class="language-python">k = "кот"
+print(k + "лета") # результат: "котлета"</code></pre>
+            <p>Дублирование (размножение) строки, операция "<b>*</b>"</p>
+            <pre><code class="language-python">print("Бла" * 3) # Результат: "БлаБлаБла"</code></pre>            
+            <p>Получение длины строки, функция <b>len()</b></p>
+            <pre><code class="language-python">print(len("питон")) # Результат: 5</code></pre>            
+            <p>Преобразование строки к верхнему регистру, метод <b>upper()</b></p>
+            <pre><code class="language-python">msg = "Тихо, дети!"
+print(msg.upper()) # Выдаст на консоль: "ТИХО, ДЕТИ!"</code></pre>            
+            <p>Преобразование строки к нижнему регистру, метод <b>lower()</b></p>
+            <pre><code class="language-python">print("АаАаОоОо".lower()) # Результат: "ааааоооо"</code></pre>
+        </div>
+        <div class="lesson">
+            <h3>Операции, функции и методы строк</h3>
+            <p>Давайте научимся понимать, чем отличаются эти понятия.
+                <b>Операции</b> отделяются от самой строки при записи и обозначаются значками. Это операции + и *.</p>
+            <pre><code class="language-python">"доедай" + "додыр" #Операция + конкатенирует строки</code></pre>
+            <p><b>Функция</b> - это самостоятельный блок кода, который выполняет определенную задачу и имеет имя.
+                Функции вызываются напрямую по своему имени, и им могут передавать аргументы.
+                Например, передаем строку в качестве аргумента фукнции len(). Функция len() при этом не принадлежит
+                самой строке, а существует независимо.</p>
+            <pre><code class="language-python">l = len("питон") # Функция len() вычисляет длину строки
+s = str(l) # Функция str() преобразует число в строку
+print("Длина строки = "+s) # Функция print выводит строку на экран</code></pre>
+            <p><b>Методы</b> - это фунции, связанные с определенным объектом (в данном случае, со строкой).
+                Дело в том, что в Пайтоне каждая строка это не просто строка, а <b>объект</b>, у которого есть методы
+                (функции, принадлежащие ему). Чтобы вызвать метод, надо после имени объекта (после переменной,
+                содержащей строку, или после самой строки) поставить точку, и сразу за ней написать имя метода. Например:</p>
+            <pre><code class="language-python">s = "abc".upper() # В переменную s запишется "ABC"
+print(s.lower()) # Будет напечатано: abc</code></pre>
+
+            <p>Методы нельзя употреблять сами по себе, без префикса объекта, которому метод принадлежит:</p>
+<pre><code class="language-python">s = upper("abc") # Ошибка!</code></pre>
+        </div>
+        <div class="lesson">
+            <h3>Какие ещё есть методы у строк</h3>
+            <p>Метод <b>capitalize()</b> переводит первый символ строки в верхний регистр, а все остальные в нижний</p>
+            <pre><code class="language-python">print("конечно ВАСЯ".capitalize()) # Результат: "Конечно вася"</code></pre>
+            <p>Метод <b>title</b> первую букву каждого слова переводит в верхний регистр, а все остальные в нижний</p>
+            <pre><code class="language-python">print("каждый охотник".title()) # Результат: "Каждый Охотник"</code></pre>
+            <p>Метод <b>isupper()</b> проверяет, что в строке есть буквы в ВЕРХНЕМ регистре, но нет букв в нижнем регистре,
+                и возвращает True или False</p>
+            <pre><code class="language-python">print("СТОП!".isupper()) # Результат: True (с русскими буквами - работает)
+print("S T.O?P:)".isupper()) # Результат: True (с латинскими буквами - тоже работает)
+print('123'.isupper()) # Результат: False (нет букв)
+print("QWERTy".isupper()) # Результат: False (есть буква в нижнем регистре)</code></pre>
+            <p>Метод <b>islower()</b> проверяет, что в строке есть буквы в нижнем регистре, но нет букв в ВЕРХНЕМ регистре.
+                Она также возвращает True или False</p>
+            <pre><code class="language-python">print("bubble gum".islower()) # Результат: True
+print("""Привет Китти""".islower()) # Результат: False</code></pre>
+            <p>Метод <b>isdigit()</b> проверяет, состоит ли строка из одних цифр</p>
+            <pre><code class="language-python">print("-1".isdigit())    # False
+print("1.23".isdigit())  # False
+print("123".isdigit())   # True
+print(" 123 ".isdigit()) # False
+print("".isdigit())      # False</code></pre>
+            <p>Метод <b>isalpha()</b> проверяет, состоит ли строка из одних букв</p>
+            <pre><code class="language-python">print("ПреттиGood".isalpha()) # True
+print("раз два".isalpha())   # False</code></pre>
+            <p>Метод <b>isalnum()</b> проверяет, состоит ли строка из цифр или букв</p>
+            <pre><code class="language-python">print("abc123АБВ".isalpha()) # True</code></pre>
+            <p>Есть еще много методов у строк, но на этот раз не буду вас ими мучить )</p>
+        </div>
+
+        <div class="lesson">
+            <h3>Задания</h3>
+            <ol>
+                <li>Пользователь вводит строку. Программа должна вывести количество символов в этой строке (включая пробелы)</li>
+                <li>Пользователь вводит строку. Программа должна проверить, что в ней есть буквы как в вернем, так и в нижнем регистре.
+                    Надо вывести результат проверки (True / False)</li>
+                <li>Пользователь вводит строку. Программа должна проверить, что в ней есть слова длиннее 1 буквы.</li>
+            </ol>
+        </div>
+    </main>
+    <div align="center"><img src="img/lesson011.jpg"></div>
+    <footer>
+        <p>&copy; 2024 Pythonchico</p>
+    </footer>
+</body>
+</html>

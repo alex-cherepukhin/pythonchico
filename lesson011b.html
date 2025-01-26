@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 11 - разбор задачи №2</title>
+    <link rel="shortcut icon" href="py.ico" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Урок 11 - разбор задачи №2</h1>
+    </header>
+    <main>
+        <div class="welcome">
+            <h2>Разбор задачи урока 11</h2>
+            <p>Задача оказалась нелегкой и решение неочевидным. Разберем его.</p>
+        </div>
+        <div class="lesson">
+            <h3>Условие задачи №2</h3>
+            <p>Пользователь вводит строку. Программа должна проверить, что в ней есть буквы как в вернем, так и в нижнем регистре.
+                Надо вывести результат проверки (True / False).</p>
+        </div>
+
+        <div class="lesson">
+            <h3>Пояснения к условию.</h3>
+            <p>Буквы в верхнем регистре - это заглавные буквы (АБВ), буквы в нижнем регистре - это строчные (абв).</p>
+            <p>Разделим задачу на отдельные шаги, каждый из которых понять и выполнить легче, чем целую задачу.</p>
+            <ol>
+                <li>Ввести строку с клавиатуры и присвоить ее строковой переменной.</li>
+                <li>Определить, есть ли в строке заглавные буквы.</li>
+                <li>Определить, есть ли в строке строчные буквы.</li>
+                <li>Вычислить единый результат проверки (совместить две предыдущих проверки).</li>
+                <li>Вывести результат на экран.</li>
+            </ol>
+        </div>
+        <div class="lesson">
+            <h3>1. Ввести строку.</h3>
+            <p>Это мы уже делали не раз:</p>
+            <pre><code class="language-python">s = input("Введите строку:")</code></pre>
+        </div>
+        <div class="lesson">
+            <h3>2. Определить, есть ли в строке заглавные буквы.</h3>
+            <p>Сначала рассмотрим несколько примеров строк, чтобы лучше понять задачу</p>
+            <ul>
+                <li>"Winnie the Pooh" - есть две заглавные буквы</li>
+                <li>"piglet" - нет заглавных букв</li>
+                <li>"OWL" - все буквы заглавные</li>
+            </ul>
+            <p>Как проверить, что заглавные буквы есть? Если попробовать использовать метод <code>isupper()</code>,
+                это не выход, т.к. на результат влияет наличие строчных букв:</p>
+            <pre><code class="language-python">print(isupper("Winnie the Pooh")) # False</code></pre>
+            <p>Но можно использовать один из методов, которые воздействуют на заглавные буквы,
+                и проверить результат применения метода. Если результат не изменился, значит заглавных
+                букв в исходной строке не было. Используем метод <code>lower()</code></p>
+            <pre><code class="language-python">print(lower("Winnie the Pooh")) # winnie the pooh</code></pre>
+            <p>Осталось только сравнить с исходной строкой:</p>
+            <pre><code class="language-python">s = "Winnie the Pooh"
+print(lower(s) != s) # True</code></pre>
+            <p>После применения метода <code>lower()</code> значение строки изменилось
+                (было "Winnie the Pooh", стало "winnie the pooh"),
+                поэтому проверка на неравенство выдаст True</p>
+        </div>
+        <div class="lesson">
+            <h3>3. Определить, есть ли в строке строчные буквы.</h3>
+            <p>Это зеркальная задача, она решается точно также, только с применением метода
+                <code>lower()</code>, обратного к методу <code>upper().</code></p>
+            <pre><code class="language-python">s = "Winnie the Pooh"
+print(lower(s) != s) # True</code></pre>
+        </div>
+
+        <div class="lesson">
+            <h3>4. Совместить две предыдущих проверки.</h3>
+            <p>Если надо проверить, что <b>условие1</b> истинно И <b>условие2</b>
+                истинно, используется логический оператор <code>and</code>:</p>
+            <pre><code class="language-python">print(True and True) # True</code></pre>
+            <p>Оператор <code>and</code> совмещает два логических выражения. Подставим сюда выражения, проверяющие
+                исходную строку на наличие заглавных и строчных букв.</p>
+            <pre><code class="language-python">s = "Winnie the Pooh"
+print(upper(s) != s and lower(s) != s) # True</code></pre>
+        </div>
+
+        <div class="lesson">
+            <h3>5. Осталось добавить ввод строки пользователем.</h3>
+            <p>Окончательный результат:</p>
+            <pre><code class="language-python">s = input("Введите строку:")
+print(upper(s) != s and lower(s) != s) # True</code></pre>
+            <p>Вторая задача решена!</p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Pythonchico</p>
+    </footer>
+</body>
+</html>

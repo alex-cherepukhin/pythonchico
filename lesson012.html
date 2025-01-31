@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 12</title>
+    <link rel="shortcut icon" href="py.ico" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Урок 12</h1>
+    </header>
+    <main>
+        <div class="welcome">
+            <h2>F-строки и R-строки</h2>
+            <p>Познакомимся с внедрением переменных в строку, неформатированными строками и понятием кода символа.</p>
+        </div>
+        <div class="lesson">
+            <h3>F-строки</h3>
+            <p>Их еще называют <b>форматированные</b> строки. Начнем с примера, в котором на экран выводятся значения двух переменных</p>
+            <pre><code class="language-python">latitude = 51.9
+longitude = 39.3
+print(f"Клад закопан тут: широта {latitude}, долгота {longitude}")
+# результат: "Клад закопан тут: широта 51.9, долгота 39.3"</code></pre>
+            <p>Python позволяет встравивать в строку значения других переменных. Для этого внутри строки переменные
+                размещаются в фигурных скобках {}, а перед всей строкой ставится символ "f".
+                F-строку можно присвоить переменной, а не только передать в функцию <code>print()</code>, например:</p>
+            <pre><code class="language-python">userName = "Tom"
+userAge = 37
+user = f"name: {userName}  age: {userAge}"
+print(user)   # name: Tom  age: 37</code></pre>
+</div>
+        <div class="lesson">
+            <h3>R-строки</h3>
+            <p>Мы уже проходили, как вставить в строку переход на новую строку, используя <b>управляющую
+                последовательность</b> <code>\n</code>. Управляющая последовательность состоит из знака 
+                обратного слэша "\", за которым следует символ. При этом говорят, что обратный слэш <b>экранирует</b>
+                этот символ.</p>
+            <pre><code class="language-python">text = "Message:\n\"Hello World\""
+print(text)</code></pre>
+            <p>На экран будет выведено:</p>
+            <pre><code class="language-none">Message:
+"Hello World"</code></pre>
+            <p>При этом последовательность <code>\n</code> превратилась в перевод строки,
+            а последовательность <code>\"</code> - в двойную кавычку. Но если перед строкой, содержащей
+            управляющие последовательности, поставить символ "r", то превращение не происходит, а
+            последовательности остаются в строке в неизменном виде:</p>
+            <pre><code class="language-python">text = r"Message:\n\"Hello World\""
+print(text)</code></pre>
+            <p>Такую строку с символом "r" перед ней ещё называют <b>неформатированной строкой</b>,
+                при этом говорят, что R-строка <b>подавляет экранирование</b> символов, содержащихся в ней.
+                На экран будет выведено:</p>
+            <pre><code class="language-none">Message:\n\"Hello World\"</code></pre>
+            <p>Для примера, переменная path содержит некоторый путь к файлу, и мы хотим вывести его на экран:</p>
+            <pre><code class="language-python">path = "C:\python\name.txt"
+print(path)</code></pre>
+            <p>Вот что мы увидим:</p>
+            <pre><code class="language-none">C:\python
+ame.txt</code></pre>
+            <p>Внутри строки были символы "\n", которые заменились на перевод строки.
+                Чтобы избежать подобной ситуации, перед строкой ставится символ "r":</p>
+            <pre><code class="language-python">print(r"C:\python\name.txt")</code></pre>
+        </div>
+
+
+        <div class="lesson">
+            <h3>Коды символов</h3>
+            <p>У каждого символа (буквы, цифры, пробела, других знаков), который мы используем в тексте программы
+                и в том числе в строках, есть свой <b>номер</b>.
+                Это порядковый номер символа в таблице символов (которая еще называется таблицей ASCII).
+                Номер символа обычно называют <b>кодом</b> символа. Вот коды некоторых символов
+            </p>
+
+            <table border="1" cellpadding="5" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Символ</th>
+                  <th>Код (десятичный)</th>
+                  <th>Описание</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>A</td>
+                  <td>65</td>
+                  <td>Заглавная буква A</td>
+                </tr>
+                <tr>
+                  <td>a</td>
+                  <td>97</td>
+                  <td>Строчная буква a</td>
+                </tr>
+                <tr>
+                  <td>0</td>
+                  <td>48</td>
+                  <td>Цифра 0</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>57</td>
+                  <td>Цифра 9</td>
+                </tr>
+                <tr>
+                  <td>!</td>
+                  <td>33</td>
+                  <td>Восклицательный знак</td>
+                </tr>
+                <tr>
+                  <td>@</td>
+                  <td>64</td>
+                  <td>Символ "собака" (@)</td>
+                </tr>
+                <tr>
+                  <td>#</td>
+                  <td>35</td>
+                  <td>Решётка (#)</td>
+                </tr>
+                <tr>
+                  <td>$</td>
+                  <td>36</td>
+                  <td>Знак доллара ($)</td>
+                </tr>
+                <tr>
+                  <td>' '</td>
+                  <td>32</td>
+                  <td>Пробел</td>
+                </tr>
+                <tr>
+                  <td>\n</td>
+                  <td>10</td>
+                  <td>Перевод строки (LF)</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <p>Функция <b>ord()</b> выдает код символа, который передается ей в качестве параметра:</p>
+            <pre><code class="language-python">print(ord('a'))</code></pre>
+            <p>Будет напечатано:</p>
+            <pre><code class="language-none">97</code></pre>
+            <p>Функция <b>chr()</b> действует наоборот, она принимает код символа, и возвращает символ,
+                который имеет такой код (т.е. выдает символ по его коду)</p>
+            <pre><code class="language-python">print(chr(97))</code></pre>
+            <p>Будет напечатано:</p>
+            <pre>'a'</pre>
+            <p>Функции ord() и chr() являются <b>обратными</b> друг ко другу, т.е. если применить одну из них
+            к другой, то на выходе получим исходный символ или исходный код символа:</p>
+            <pre><code class="language-python">print(ord(chr(97))) # результат: 97
+print(chr(ord('a'))) # результат: 'a'</code></pre>
+        </div>
+        <div class="lesson">
+            <h3>Задания</h3>
+            <ol>
+                <li>Пользователь вводит символ. Надо выдать его код, используя F-строку.</li>
+                <li>Пользователь вводит код символа. Надо выдать на экран символ с таким кодом, подавив его экранирование при выводе.</li>
+            </ol>
+        </div>
+    </main>
+    <div align="center"><img src="img/lesson012.jpg"></div>
+    <footer>
+        <p>&copy; 2024 Pythonchico</p>
+    </footer>
+</body>
+</html>

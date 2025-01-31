@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 11 - разбор задачи №3</title>
+    <link rel="shortcut icon" href="py.ico" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Урок 11 - разбор задачи №3</h1>
+    </header>
+    <main>
+        <div class="welcome">
+            <h2>Разбор последней задачи урока 11</h2>
+            <p>Ученики приуныли, а питону не терпится ползти дальше. Разберем последнюю задачу и вперёд!</p>
+        </div>
+        <div class="lesson">
+            <h3>Условие задачи №3</h3>
+            <p>Пользователь вводит строку. Программа должна проверить, что в ней есть слова длиннее 1 буквы.</p>
+        </div>
+
+        <div class="lesson">
+            <h3>1. Ввод строки.</h3>
+            <pre><code class="language-python">s = input("Введите строку:")</code></pre>
+        </div>
+        <div class="lesson">
+            <h3>2. Проверка на длинные слова.</h3>
+            <p>Вот примеры строк со словами. Смотреть на конкретные примеры помогает нашей мысли.</p>
+            <ol>
+                <li>"pooh" - есть слово из 4 букв</li>
+                <li>"POOH" - есть слово из 4 букв</li>
+                <li>"Pooh" - есть слово из 4 букв</li>                
+                <li>"P O O H" - все слова имеют длину 1</li>
+                <li>"p o o h" - все слова имеют длину 1</li>
+            </ol>
+            <p>Для начала общие рассуждения. Чтобы отделить пшеницу от шелухи (мякины),
+                применяется метод веяния (ветер), который избирательно воздействует на шелуху (уносит ее прочь),
+                но не воздействует на пшеницу. По тому же принципу можно разделить стальные шарики от
+                пластмассовых (магнитом), или стальные от деревянных (бросить в воду).</p>
+            <p>Как проверить, что второй и последующих букв нет? Для этого используем метод,
+                который воздействует по-разному на первые и последующие буквы слов.
+                Правильно, это метод <code>title()</code>. Постараемся с его помощью добиться изменения
+                во второй и последующих буквах. После применения метода: </p>
+            <ol>
+                <li>"pooh".title() == "Pooh"</li>
+                <li>"p o o h".title() == "P O O H"</li>
+            </ol>
+            <p>В случае с "pooh", вторая и последующие буквы не изменились. Это потому,
+                что они уже были строчными. Что же делать, как заставить их измениться?</p>
+        </div>
+        <div class="lesson">
+            <h3>3. Предварительная подготовка строки.</h3>
+            <p>Давайте сначала приведем слово к верхнему регистру (сделаем буквы заглавными):</p>
+            <ol>
+                <li>"pooh".upper() == "POOH"</li>
+                <li>"P O O H".upper() == "P O O H"</li>
+            </ol>
+            <p>Пока нам не важно, поменялась ли при этом строка или нет.</p>
+        </div>
+        <div class="lesson">
+            <h3>4. Проверка, которая установит истину.</h3>
+            <p>На втором шаге применим метод <code>title()</code>:</p>
+            <ol>
+                <li>"POOH".title() == "Pooh"</li>
+                <li>"P O O H".title() == "P O O H"</li>
+            </ol>
+            <p>В первой строке изменение произошло, а во второй - нет. Из этого заключаем,
+                что в первой строке есть слова длиннее 1 буквы.</p>
+            <ol>
+                <li>"pooh".upper().title() != "pooh".upper()</li>
+                <li>"P O O H".upper().title() == "P O O H".upper()</li>
+            </ol>
+        </div>
+        <div class="lesson">
+            <h3>5. Окончательный результат.</h3>
+            <p>Запишем то же в виде программы:</p>
+            <pre><code class="language-python">s = input("Введите строку:")
+long_word_exist = s.upper().title() != s.upper()
+print(str(long_word_exist)) # True / False</code></pre>
+            <p>Всё было не так уж сложно!</p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Pythonchico</p>
+    </footer>
+</body>
+</html>

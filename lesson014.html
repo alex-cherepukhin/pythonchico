@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 14</title>
+    <link rel="shortcut icon" href="py.ico" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Урок 14</h1>
+    </header>
+    <main>
+        <div class="welcome">
+            <h2>Цикл while (продолжение)</h2>
+            <p>Изучим новые трюки, на который способен знакомый цикл while.</p>
+        </div>
+
+        <div class="lesson">
+            <h3>Выход из цикла - оператор <b>break</b></h3>
+            <p>Оператор <b>break</b> осуществляет выход из цикла. Он может использоваться, если в цикле
+                образуются условия, которые несовместимы с его дальнейшим выполнением.</p>
+            <div align="center"><img src="img/lesson014a.jpg" width="60%"></div>
+            <p>Пример:</p>
+            <pre><code class="language-python">number = 0
+
+while number < 5:
+    number = number + 1
+    if number == 3:    # если number = 3, выходим из цикла
+        break
+    print(f"number = {number}")</code></pre>
+            <p>Здесь цикл while проверяет условие <b>number < 5</b>. И пока number не равно 5, предполагается,
+                что значение number будет выводиться на экран. Однако внутри цикла также проверяется
+                другое условие: <b>if number == 3</b>. То есть, если значение number равно 3, то с помощью
+                оператора break выходим из цикла. В итоге на экран будет выведено:</p>
+                <pre><code class="language-none">number = 1
+number = 2</code></pre>
+        </div>
+
+        <div class="lesson">
+            <h3>Бесконечный цикл с <b>break</b></h3>
+            <p>Используя команду <b>break</b>, можно организовать "бесконечный" цикл (условие которого всегда истинно),
+                и завершать его, подавая команду <code>break</code> в теле цикла при выполнении определённого условия.</p>
+            <div align="center"><img src="img/lesson014b.jpg" width="60%"></div>
+            <p>Например</p>
+            <pre><code class="language-python">while True:
+    user_input = input("Для выхода введите слово `bye`: ")
+    if user_input == "bye"
+        break;
+print("Программа завершена.")</code></pre>
+        <p>Что увидит пользователь:</p>
+            <pre><code class="language-none">Для выхода введите слово `bye`: пока
+Для выхода введите слово `bye`: adios
+Для выхода введите слово `bye`: bye
+Программа завершена.</code></pre>
+        </div>
+        <div class="lesson">
+            <h3>Команда перехода на следующую итерацию - <b>continue</b></h3>
+            <p>В отличие от оператора break оператор <b>continue</b> выполняет переход к следующей
+                итерации цикла без его завершения.</p>
+            <div align="center"><img src="img/lesson014c.jpg" width="60%"></div>
+            <p>Например, в предыдущем примере заменим break на continue:</p>
+            <pre><code class="language-python">number = 0
+while number < 5:
+    number += 1
+    if number == 3 :    # если number = 3, переходим к новой итерации цикла
+        continue
+    print(f"number = {number}")</code></pre>
+    <p>И в этом случае если значение переменной number равно 3, последующие инструкции
+        после оператора continue не будут выполняться в этой итерации:</p>
+    <pre><code class="language-none">number = 1
+number = 2
+number = 4
+number = 5</code></pre>
+        </div>
+        <div class="lesson">
+            <h3>Пустой оператор</h3>
+            <p><b>Пустой оператор</b> — это оператор, который не выполняет никакого действия.
+                В Пайтоне это оператор <b>pass</b>. Когда компьютер встречает такое,
+                он пропускает пустой оператор и выполняет команды дальше.</p>
+            <p>Но зачем может понадобиться оператор, который ничего не делает? Его можно вставлять
+                в коде в любое место, где требуется какое-то действие (по синтаксису языка),
+                но при этом мы еще не решили какое действие нужно вставить, или не хотим выполнять
+                в этом месте никакого действия. Поясним это на примере, который был выше в данном уроке.</p>
+                <pre><code class="language-python">while True:
+    user_input = input("Для выхода введите слово `bye`: ")
+    if user_input == "bye"
+        break;</code></pre>
+            <p>Перепишем эту программу, перенеся ввод строки и проверку в условие цикла и избавившись
+            таким образом от необходимости в команде <code>break</code>:</p>
+            <pre><code class="language-python">while input("Для выхода введите слово `bye`: ") == "bye":</code></pre>
+            <p>Казалось бы, в программе есть всё что нужно. В цикле выдается приглашение ввести слово.
+                Введенное слово проверяется на равенство со строкой "bye". Когда введено слово "bye",
+            выполнение цикла заканчивается. Но ЧЕГО-ТО не хватает. По правилам языка, у цикла должно быть тело, а его нет.
+        На строке, следующей за условием цикла, должна быть хотя бы одна команда с отступом слева от первой строки цикла.
+    Исправим программу, поставив в это место пустой оператор:</p>
+            <pre><code class="language-python">while input("Для выхода введите слово `bye`: ") == "bye":
+    pass</code></pre>
+        </div>
+        <div class="lesson">
+            <h3>Задания</h3>
+            <ol>
+                <li>Напишите короткую программу, которая ничего не делает.</li>
+                <li>Подбери наименьшее натуральное число, которое делится на 123 и 321. Используй при этом break или continue.</li>
+                <li>Выведи на экран все числа от 1 до 100, которые не делятся на 7 нацело. При этом используй break или continue.</li>
+            </ol>
+        </div>
+    </main>
+    <div align="center"><img src="img/lesson014d.jpg"></div>
+    <footer>
+        <p>&copy; 2024 Pythonchico</p>
+    </footer>
+</body>
+</html>

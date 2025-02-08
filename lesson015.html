@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 15</title>
+    <link rel="shortcut icon" href="py.ico" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Урок 15</h1>
+    </header>
+    <main>
+        <div class="welcome">
+            <h2>Арифметические операции с присвоением</h2>
+            <p>Изучим, как в Пайтоне можно сокращенно записывать некоторые действия.
+            Ряд специальных операций позволяют использовать присвоить результат операции первому операнду:</p>
+        </div>
+
+        <div class="lesson">
+            <h3><b>+=</b> (Присвоение результата сложения)</h3>
+            <p>Предположим, что переменная <code>counter</code> используется как счетчик,
+               т.е. в ней мы храним количество и по ходу программы увеличиваем ее на 1:.</p>
+            <pre><code class="language-python">counter = counter + 1</code></pre>
+            <p>Сократим запись, используя операцию сложения с присвоением:</p>
+            <pre><code class="language-python">counter += 1</code></pre>
+            <p>Операция <b>+=</b> суммирует значение переменной (слева) со значением выражения (справа)
+               и присваивает результат переменной (слева). Пример программы:</p>
+            <pre><code class="language-python">counter = 0 # Объявляем переменную counter
+counter += 1   # Увеличиваем её на 1
+print(counter) # Будет напечатано: 1</code></pre>
+            <p>Слева от операции с присвоением должна быть переменная. Так неправильно:</p>
+            <pre><code class="language-python">print(0 += 1)  # Ошибка!</code></pre>
+            <p>Переменная, используемая в операции с присвоением, должна быть ранее объявлена
+            (т.е. должна уже иметь значение). Нельзя в одной команде объявить переменную и использовать ее значение:</p>
+            <pre><code class="language-python">counter += 1   # Ошибка! counter не объявлена
+print(counter)</code></pre>
+        </div>
+
+        <div class="lesson">
+            <h3><b>-=</b> (Присвоение результата вычитания)</h3>
+            <p>Операция <b>-=</b> вычитает из значения переменной (слева) значение выражения (справа)
+               и присваивает результат переменной (слева).</p>
+            <pre><code class="language-python">zarplata = 40000
+nalog = 12000
+zarplata -= nalog   # Уменьшаем сумму к выдаче на размер налога
+print(f"После уплаты налога: {zarplata}")  # Выдаст 28000</code></pre>
+        </div>
+    <div align="center"><img src="img/lesson015a.jpg"></div>
+        <div class="lesson">
+            <h3><b>*=</b> (Присвоение результата умножения)</h3>
+            <p>Операция умножает значение переменной (слева)
+               на значение выражения (справа) и присваивает результат переменной (слева).</p>
+            <pre><code class="language-python"># Вычисляем 2 в степени 12
+resultat = 1
+stepen = 0
+
+while stepen < 12:
+    stepen += 1
+    resultat *= 2
+
+print(f"2^12 = {resultat}") # 4096</code></pre>
+        </div>
+
+        <div class="lesson">
+            <h3><b>**=</b> (Присвоение степени числа)</h3>
+            <p>Операция возводит значение переменной (слева)
+               в степень, равную значению выражения (справа) и присваивает результат переменной (слева).
+               Решим предыдущую задачу, используя эту операцию</p>
+            <pre><code class="language-python">resultat = 2
+resultat **= 12
+print(f"2^12 = {resultat}") # 4096</code></pre>
+        </div>
+
+        <div class="lesson">
+            <h3><b>/=</b> (Присвоение результата от деления)</h3>
+            <p>И эта операция работает похожим образом. Она делит значение переменной (слева)
+               на значение выражения (справа) и присваивает результат переменной (слева).</p>
+            <pre><code class="language-python">konfet = 28
+bratiev = 6
+sester = 1
+konfet /= bratiev + sester
+print(f"Каждому по {konfet} штук")  # "Каждому по 4 штук"</code></pre>
+        </div>
+
+        <div class="lesson">
+            <h3><b>//=</b> (Присвоение результата целочисленного деления)</h3>
+            <p>Если конфеты не делятся нацело, остаток можно припрятать, а раздать
+детям по целому числу конфет.</p>
+            <pre><code class="language-python">konfet = 19
+detei = 10
+konfet //= detei
+print(f"Каждому по {konfet} штук")  # "Каждому по 1 штук"</code></pre>
+        </div>
+    <div align="center"><img src="img/lesson015b.jpg"></div>
+        <div class="lesson">
+            <h3>Задания</h3>
+            <p>При решении задач надо использовать операции с присвоением.</p>
+            <ol>
+                <li>Калькулятор возраста. Программа должна запросить у пользователя текущий год и год рождения,
+а затем вычислять и вывести примерный возраст пользователя.</li>
+                <li>Степень. Найти (путем подбора) максимальную степень числа 7, которая не превышает 7000.
+Например, максимальная степень числа 2, которая не превышает 20 - это число 4, т.к. 2**4 = 16 (<= 20),
+а 2**5 = 32 (> 20)</li>
+                <li>Овердрафт. Программа имитирует оплату банковской картой, на счете которой изначально лежало 1000 руб.
+В цикле пользователь вводит числа (стоимость покупки), и эти числа списываются со счета. Если очередное число
+превышает остаток на счете, программа выдает "Овердрафт! Осталось всего...", печатая остаток счета, и прекращает работу.</li>
+            </ol>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Pythonchico</p>
+    </footer>
+</body>
+</html>

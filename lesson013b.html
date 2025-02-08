@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 13, задача 2</title>
+    <link rel="shortcut icon" href="py.ico" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Урок 13, задача 2</h1>
+    </header>
+    <main>
+        <div class="welcome">
+            <h2>Решение задачи #2</h2>
+            <p>Задачи с циклами вызвали затруднение. Разберём, как решить одну из них.</p>
+        </div>
+        <div class="lesson">
+            <h3>Условие задачи #2</h3>
+            <p>Копилка. Программа просит пользователя ввести число, и продолжает до тех пор, пока сумма всех введенных чисел меньше 100.</p>
+        </div>
+
+        <div class="lesson">
+            <h3>Переменная - копилка</h3>
+            <p>Начнём с того, какие переменные нам понадобятся. Поскольку речь ведётся о сумме введённых чисел,
+               эту сумму надо где-то хранить. Для этого заведём переменную <b>kopilka</b>. В начале её надо
+               инициализировать значением 0, а затем к нему будем добавлять введенные числа.</p>
+            <p>Также сазано о числе, которое вводит пользователь. Пусть это число хранится в переменной <b>s</b>.
+               Заодно напишем, как число попадает в переменную - через функцию input.</p>
+<pre><code class="language-python">kopilka = 0
+s = input("Введите число: ")</code></pre>
+            <p>Переменная s - строкового типа. Хотя пользователь, как думаем, ввёл число (например, 5), на самом деле
+            он ввёл строковое представление числа, то есть строку "5". Чтобы положить это значение в копилку,
+            преобразуем его в число функцией int()</p>
+<pre><code class="language-python">kopilka = kopilka + int(s)</code></pre>
+        </div>
+
+        <div class="lesson">
+            <h3>Добавляем цикл</h3>
+            <p>Теперь добавим цикл. В условии цикла проверяем значение копилки. Первая команда (инициализация переменной kopilka)
+            должна идти перед циклом, чтобы не обнулять копилку на каждом шаге. А остальные две команды попадут в тело цикла
+            (и получат отступ слева). В конце, после цикла, сообщим о сумме в копилке, хотя в задаче это не требуется.</p>
+<pre><code class="language-python">kopilka = 0
+while kopilka < 100:
+    s = input("Введите число: ")
+    kopilka = kopilka + int(s)
+print(f"Сумма в копилке = {kopilka}")</code></pre>
+            <p>Запустим эту программу</p>
+<pre><code class="language-none">Введите число: 5
+Введите число: 45
+Введите число: 55
+Сумма в копилке = 105</code></pre>
+            <p></p>
+        </div>
+
+        <div class="lesson">
+            <h3>Сократим код?</h3>
+            <p>Иногда ради удобства (или пижонства) программист стремится записать код максимально коротко.
+               В данном случае кратчайшее решение:</p>
+<pre><code class="language-python">kopilka = 0
+while kopilka < 100:
+    kopilka += int(input("Введите число: "))</code></pre>
+        </div>
+
+        <div class="lesson">
+            <h3>Проверка введенного значения</h3>
+            <p>По сути задача решена, но хороший программист обычно предвидит возможную проблему и предусматривает
+            её решение в программе. Что если пользователь введёт <b>не число</b>?.</p>
+<pre><code class="language-none">Введите число: abc
+Traceback (most recent call last):
+  File "<pyshell#1>", line 1, in <module>
+    int('abc')
+ValueError: invalid literal for int() with base 10: 'abc'</code></pre>
+            <p>Не очень понятно, и даже пугающе. Давайте проверим, что во введённой строке содержится число число,
+               до того, как пытаться сконвертировать строку, использовав метод <b>isdigit()</b>.</p>
+            <pre><code class="language-python">kopilka = 0
+while kopilka < 100:
+    s = input("Введите число: ")
+    if not s.isdigit():
+        print("Надо ввести число из цифр!")
+    else:
+        kopilka = kopilka + int(s)
+print(f"Сумма в копилке = {kopilka}")</code></pre>
+            <p>Пример взаимодействия этой программы с пользователем:</p>
+<pre><code class="language-none">Введите число: abc
+Надо ввести число из цифр!
+Введите число: 99
+Введите число: 1
+Сумма в копилке = 100</code></pre>
+        </div>
+
+        <div class="lesson">
+            <h3>Можно ли еще улучшить?</h3>
+            <p>Обычно ответ - да. Допустим, пользователь введет строку "-1". В ней содержится число, но метод
+               isdigit() поднимет ложную тревогу, т.к. знак минуса не является цифрой. Что же делать?</p>
+            <p>В Пайтоне есть оператор <b>try..except</b>, который в данном случае позволяет "попробовать" (try)
+               получить из строки число, а если это вызвало ошибку - перехватить её (except), чтобы выдать
+               понятное сообщение и продолжить работу программы.</p>
+            <pre><code class="language-python">kopilka = 0
+while kopilka < 100:
+    s = input("Введите число: ")
+    try:
+        num = int(s)
+        kopilka += num
+    except ValueError:
+        print("Надо ввести целое число!")
+
+print(f"Сумма в копилке = {kopilka}")</code></pre>
+            <p>Этот вариант не обязательно полностью понимать, просто полюбуйтесь, как можно изящно
+            предотвращать ошибки программы.</p>
+    </main>
+    <div align="center"><img src="img/lesson013d.jpg"></div>
+    <footer>
+        <p>&copy; 2024 Pythonchico</p>
+    </footer>
+</body>
+</html>

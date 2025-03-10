@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 16</title>
+    <link rel="shortcut icon" href="py.ico" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Урок 16</h1>
+    </header>
+    <main>
+        <div class="welcome">
+            <h2>Списки</h2>
+            <p>Начнем знакомство с составными типами данных в Python.</p>
+        </div>
+
+        <div class="lesson">
+            <h3>Скалярные типы данных</h3>
+            <p>До этого мы рассматривали <b>простые типы</b> данных, ещё их называют <b>скалярные типы</b>,
+               то есть типы, содержащие только одно значение.
+               Переменная простого типа - как обычная коробка, в которой лежит всего одна вещь. Примеры:</p>
+            <ol>
+                <li>Число (например, 5)</li>
+                <li>Символ (например, 'A')</li>
+                <li>Логическое значение (True или False)</li>
+            </ol>
+        </div>
+
+        <div class="lesson">
+            <h3>Список (list)</h3>
+            <p>По сравнению с простыми типами данных, есть также <b>составные</b> типы. Они предназначены для
+               работы с наборами данных. То есть переменная составного типа может хранить не одно значение, а целый набор.
+               Одним из составных типов является список.
+               Список (list) представляет тип данных, который хранит набор или последовательность элементов.
+               В других языках программирования есть аналогичная структура данных, которая называется <b>массив</b>.</p>
+        </div>
+
+       <div align="center"><img src="img/lesson016b.jpg"></div>
+ 
+        <div class="lesson">
+            <h3>Создание списка</h3>
+            <p>Для создания списка применяются квадратные скобки [], внутри которых через запятую перечисляются
+               элементы списка. Например, определим список чисел:</p>
+            <pre><code class="language-python">numbers = [10, 20, 30, 40]</code></pre>
+            <p>Подобным образом можно определять списки с данными других типов, например, определим список строк:</p>
+            <pre><code class="language-python">people = ["Tom", "Sam", "Bob"]</code></pre>
+            <p>Список может быть пустым. Вот как его создать:</p>
+            <pre><code class="language-python">numbers1 = []</code></pre>
+            <p>Для проверки элементов списка можно использовать стандартную функцию print, которая выводит
+               содержимое списка в удобочитаемом виде</p>
+            <pre><code class="language-python">print(numbers)  # [1, 2, 3, 4, 5]
+print(people)   # ["Tom", "Sam", "Bob"]</code></pre>
+            <p>Если необходимо создать список, в котором повторяется одно и то же значение несколько раз,
+               то можно использовать символ звездочки *, то есть фактически применить операцию умножения к уже существующему списку:</p>
+            <pre><code class="language-python">numbers = [5] * 6   # 6 раз повторяем 5
+print(numbers)      # [5, 5, 5, 5, 5, 5]
+ 
+people = ["Tom"] * 3    # 3 раза повторяем "Tom"
+print(people)           # ["Tom", "Tom", "Tom"]
+ 
+students = ["Bob", "Sam"] * 2   # 2 раза повторяем "Bob", "Sam"
+print(students)                 # ["Bob", "Sam", "Bob", "Sam"]</code></pre>
+        </div>
+
+       <div align="center"><img src="img/lesson016a.jpg" width="60%"></div>
+
+        <div class="lesson">
+            <h3>Обращение к элементам списка</h3>
+            <p>Значения, хранящиеся в списке, называются <b>элементами</b> списка.</p>
+            <p>Каждый элемент имеет свой <b>порядковый номер</b> в списке. Этот порядковый номер ещё называется <b>индексом</b>.
+             Индексы начинаются с нуля. То есть первый элемент будет иметь индекс 0, второй элемент - индекс 1 и так далее.
+             Доступ к элементам списка выполняется по индексу. Если надо получить второй элемент списка, то используем имя 
+             списка, после которого в квадратных скобках укажем индекс 1.</p>
+            <pre><code class="language-python">people = ["Tom", "Sam", "Bob"]
+# получение элементов с начала списка
+print(people[0])   # Tom
+print(people[1])   # Sam
+print(people[2])   # Bob</code></pre>
+            <p>Для обращения к элементам с конца можно использовать отрицательные индексы, начиная с -1.
+            То есть у последнего элемента будет индекс -1, у предпоследнего индекс -2 и так далее.</p>
+            <pre><code class="language-python">people = ["Tom", "Sam", "Bob"]
+# получение элементов с конца списка
+print(people[-2])   # Sam
+print(people[-1])   # Bob
+print(people[-3])   # Tom</code></pre>
+            <p>Для изменения элемента списка достаточно присвоить элементу новое значение:</p>
+            <pre><code class="language-python">people = ["Tom", "Sam", "Bob"]
+ 
+people[1] = "Mike"  # изменение второго элемента
+print(people[1])    # Mike
+print(people)       # ["Tom", "Mike", "Bob"]</code></pre>
+        </div>
+
+        <div class="lesson">
+            <h3>Разложение списка</h3>
+            <p>Python позволяет <b>разложить</b> список на отдельные элементы. То есть сохранить элементы списка
+             в скалярные переменные за одну операцию присваивания:</p>
+            <pre><code class="language-python">people = ["Tom", "Bob", "Sam"]
+ 
+tom, bob, sam = people
+ 
+print(tom)      # Tom
+print(bob)      # Bob
+print(sam)      # Sam</code></pre>
+            <p>В данном случае переменным tom, bob и sam последовательно присваиваются
+               элементы из списка people. Однако следует учитывать, что количество переменных должно
+               быть равно числу элементов присваиваемого списка.</p>
+        </div>
+
+        <div class="lesson">
+            <h3>Функции для работы со списком</h3>
+            <p>Пока рассмотрим всего одну функцию <b>len(list)</b>, для получения длины списка.</p>
+            <pre><code class="language-python">p = [10, 20, 30]
+print(len(p))    # 3</code></pre>
+        </div>
+
+        <div class="lesson">
+            <h3>Задания</h3>
+            <p>Потренируемся работать со списками.</p>
+            <ol>
+                <li>Создайте список bool с двумя различными значениями логического типа. Выведите список bool на экран.</li>
+                <li>В списке people находятся имена. Найдите порядковый номер (индекс) имени "Bob" в этом списке.</li>
+                <li>Попросите пользователя ввести число от 1 до 10. Создайте список такой длины, которую указал пользователь.</li>
+            </ol>
+        </div>
+   </main>
+
+    <footer>
+        <p>&copy; 2025 Pythonchico</p>
+    </footer>
+</body>
+</html>

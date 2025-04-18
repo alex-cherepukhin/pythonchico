@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 17</title>
+    <link rel="shortcut icon" href="py.ico" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Урок 17</h1>
+    </header>
+    <main>
+        <div class="welcome">
+            <h2>Работа со списками</h2>
+            <p>Изучим на примерах самые необходимые действия, которые можно производить со списками.</p>
+        </div>
+
+        <div class="lesson">
+            <h3>Конструктор <b>list()</b></h3>
+            <p>Для создания списка можно применить функцию-конструктор <b>list()</b>.
+               Если функцию вызвать без аргументов, она вернёт пустой список. Например,
+               эти два определения списка аналогичны:
+           </p>
+            <pre><code class="language-python">numbers1 = []
+numbers2 = list()</code></pre>
+            <p>Конструктор list() может принимать набор значений (список), на основе которых создается новый список:</p>
+            <pre><code class="language-python">numbers1 = [1, 2, 3, 4, 5]
+numbers2 = list(numbers1)
+print(numbers2)  # [1, 2, 3, 4, 5]</code></pre>
+            <p>Строковое значение можно превратить в список отдельных символов также используя list():</p>
+            <pre><code class="language-python">letters = list("Hello")
+print(letters)      # ['H', 'e', 'l', 'l', 'o']</code></pre>
+        </div>
+
+       <div align="center"><img src="img/lesson017a.jpg"></div>
+
+        <div class="lesson">
+            <h3>Сравнение списков</h3>
+            <p>Два списка считаются равными, если они содержат один и тот же набор элементов:</p>
+            <pre><code class="language-python">num1 = ["one", "two", "three"]
+num2 = list(["one", "two", "three"])
+if num1 == num2:
+    print("Списки равны.") # Результат: "Списки равны."</code></pre>
+        </div>
+
+        <div class="lesson">
+            <h3>Перебор элементов</h3>
+            <p>Перебор элементов списка можно сделать с помощью цикла <b>while</b>:</p>
+            <pre><code class="language-python">people = ["Tom", "Sam", "Bob"]
+i = 0
+while i < len(people):
+    print(people[i])    # применяем индекс для получения элемента
+    i += 1</code></pre>
+            <p>Мы пока не проходили цикл <b>for</b>, но надо признать, он позволяет перебирать список ещё удобнее:</p>
+            <pre><code class="language-python">people = ["Tom", "Sam", "Bob"]
+for person in people:
+    print(person)</code></pre>
+            <p>В этом цикле создается переменная <code>person</code>, которой последовательно присваивается каждый
+               элемент списка <code>people</code>. В теле цикла мы обрабатываем очередной элемент,
+               выполняя действие над переменной <code>person</code> (в данном случае - выводим её значение на консоль).</p>
+        </div>
+
+        <div class="lesson">
+            <h3>Соединение списков</h3>
+            <p>Для объединения списков применяется операция сложения (+), например:</p>
+            <pre><code class="language-python">abc1 = ['A', 'B', 'C']
+abc2 = ['D', 'E', 'F']
+result = abc1 + abc2
+print(result)   # ['A', 'B', 'C', 'D', 'E', 'F']</code></pre>
+        </div>
+
+        <div class="lesson">
+            <h3>Встроенные функции для работы со списком</h3>
+            <p>Функцию <b>len(list)</b> мы уже проходили - она возвращает длину списка.</p>
+            <p>Функция <b>min(list)</b> возвращает наименьший элемент списка.</p>
+            <p>Соответственно, функция <b>max(list)</b> возвращает наибольший элемент:</p>
+            <pre><code class="language-python">numbers = [9, 21, 12, 1, 3, 15, 18]
+print(min(numbers))     # 1
+print(max(numbers))     # 21</code></pre>
+            <p>Функция <b>sorted(list)</b> возвращает отсортированный список:</p>
+            <pre><code class="language-python">people = ["Tom", "Bob", "Alice", "Sam"]
+ 
+sorted_people = sorted(people)
+print(sorted_people)      # ["Alice", "Bob", "Sam", "Tom"]</code></pre>
+            <p>Следует учитывать, что функции не меняют сам список, который передается им в качестве аргумента (в скобках).
+               Например, функция <code>sorted()</code> не изменит сортируемый список, а все отсортированные элементы
+               помещает в новый список, который возвращается в качестве результата.</p>
+        </div>
+
+        <div class="lesson">
+            <h3>Задания</h3>
+            <ol>
+                <li>Список покупок. Пользователь вводит названия продуктов, которые надо купить. 
+                    Ввод заканчивается, когда вместо названия вводится точка.
+                    Надо соединить названия в список и вывести его на экран.</li>
+                <li>Пользователь вводит слово. Надо отсортировать буквы в слове и вывести результат.
+                    Например, если это слово "пчела", результат будет "аелпч".</li>
+                <li>Дан список имён с повторяющимися именами в нём. Надо вывести на консоль только уникальные имена.</li>
+            </ol>
+        </div>
+ 
+        <div align="center"><img src="img/lesson017b.jpg"></div>
+   </main>
+
+    <footer>
+        <p>&copy; 2025 Pythonchico</p>
+    </footer>
+</body>
+</html>
